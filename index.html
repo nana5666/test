@@ -1,44 +1,141 @@
-class Profile:
-    def __init__(self, name, nickname, gender, attributes, likes, dislikes):
-        self.name = name
-        self.nickname = nickname
-        self.gender = gender
-        self.attributes = attributes
-        self.likes = likes
-        self.dislikes = dislikes
+    <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ปราณปรียา</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+        }
 
-    def introduce(self):
-        print(f"✨ Hello! Welcome to my profile ✨")
-        print("=" * 40)
-        print(f"👤 Name     : {self.name} ({self.nickname})")
-        print(f"✨ Status   : {', '.join(self.attributes)}")
-        print("-" * 40)
-        print("💖 Things I Love:")
-        for item in self.likes:
-            print(f"  • {item}")
-        print("-" * 40)
-        print("❌ Things I Dislike:")
-        for item in self.dislikes:
-            print(f"  • {item}")
-        print("=" * 40)
+        body {
+            background: linear-gradient(135deg, #ffe5ec 0%, #f0e6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-# สร้างโปรไฟล์
-my_profile = Profile(
-    name="ปราณปรียา สาลีผล",
-    nickname="ปราณ",
-    gender="Female",
-    attributes=["สวยสุดๆ ✨", "มั่นใจ 💃", "มีสไตล์ 💅"],
-    likes=[
-        "ความใส่ใจและรักจริง 💖",
-        "การดูแลตัวเองและแฟชั่น 💄",
-        "บรรยากาศสบายๆ และเพลงโปรด 🎵"
-    ],
-    dislikes=[
-        "เรื่องผู้หญิงและความไม่ชัดเจน 🚫",
-        "คนโกหกหรือไม่รักษาสัญญา 🙅‍♀️",
-        "ความสัมพันธ์ที่ toxic 💔"
-    ]
-)
+        .profile-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(224, 130, 170, 0.2);
+            transition: transform 0.3s ease;
+        }
 
-# แสดงผลการแนะนำตัว
-my_profile.introduce()
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #ff85a2, #a29bfe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 15px;
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #ff6b81;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .likes-title { color: #2ed573; }
+        .dislikes-title { color: #ff4757; }
+
+        .list-box {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .list-item {
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #4b6584;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .like-item { background-color: #f1f9f5; }
+        .dislike-item { background-color: #fff0f1; }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #f1f2f6;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="avatar-section">
+            <div class="avatar">✨</div>
+            <h1 class="name">ปราณปรียา สาลีผล</h1>
+            <p class="tagline">สวย มั่นใจ และมีสไตล์ในแบบตัวเอง 💃</p>
+        </div>
+
+        <hr>
+
+        <div class="section-title likes-title">
+            <span>💖</span> สิ่งที่ชอบ (Likes)
+        </div>
+        <ul class="list-box">
+            <li class="list-item like-item"><span>✨</span> ความซื่อสัตย์ ความชัดเจน และความรักจริง</li>
+            <li class="list-item like-item"><span>💄</span> การดูแลตัวเอง แฟชั่น และสิ่งสวยงาม</li>
+            <li class="list-item like-item"><span>🌿</span> บรรยากาศสบายๆ และความสัมพันธ์ที่สบายใจ</li>
+        </ul>
+
+        <div class="section-title dislikes-title">
+            <span>❌</span> สิ่งที่ไม่ชอบ (Dislikes)
+        </div>
+        <ul class="list-box">
+            <li class="list-item dislike-item"><span>🚫</span> เรื่องผู้หญิง มือที่สาม และความไม่ชัดเจน</li>
+            <li class="list-item dislike-item"><span>🙅‍♀️</span> คนโกหก พูดอย่างทำอีกอย่าง</li>
+            <li class="list-item dislike-item"><span>💔</span> ความสัมพันธ์ที่ Toxic และการไม่ให้เกียรติกัน</li>
+        </ul>
+    </div>
+
+</body>
+</html>
